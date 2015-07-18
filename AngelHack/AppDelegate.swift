@@ -8,7 +8,6 @@
 
 import UIKit
 import GoogleMaps
-import Google
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey("AIzaSyBMAGsuA1aiKvVqXs1lHEEoes0U7K9h7nU")
+        /*
+        self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var exampleViewController: ViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+        
+        self.window?.rootViewController = exampleViewController
+    
+        self.window?.makeKeyAndVisible()
+        */
+        
         return true
     }
 
