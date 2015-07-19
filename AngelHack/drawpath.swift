@@ -71,12 +71,20 @@ func GetRoute(loc1: CLLocationCoordinate2D, loc2: CLLocationCoordinate2D) {
     var error: NSError?
     let dict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSDictionary
     if dict {
-            var steps = dict["routes"][0]["legs"][0]["steps"]
+            let t1 = dict["routes"] as! NSArray
+            let t2 = t1[0] as! NSDictionary
+            let t3 = t2["legs"] as! NSArray
+            let t4 = t3[0] as! NSDictionary
+            let steps = t4["steps"] as! NSArray
+            let steps0 = steps[0] as! NSDictionary
+            let steps0_start = steps0["start_location"] as! NSDictionary
 
-            points.append(CLLocationCoordinate2DMake(steps[0]["start_location"]["lat"], steps[0]["start_location"]["lng"]))
+            points.append(CLLocationCoordinate2DMake(steps0_start["lat"], steps0_start["lng"]))
             for line in steps {
-                points.append(CLLocationCoordinate2DMake(line["end_location"]["lat"], line["end_location"]["lng"]))
-                paths.append(lines["polyline"]["points"])
+                let nstep = line["end_location"] as! NSDictionary
+                points.append(CLLocationCoordinate2DMake(nstep["lat"], nstep["lng"]))
+                let npoly = line["polyline"] as! NSDictionary
+                paths.append(npoly["points"])
         }
         } else {
             println("JSON Error \(err!.localizedDescription)")
