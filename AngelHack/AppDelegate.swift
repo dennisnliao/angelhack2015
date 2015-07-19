@@ -27,7 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         self.window?.makeKeyAndVisible()
         */
-        
+        locationManager.requestAlwaysAuthorization()
+
         return true
     }
 
