@@ -1,21 +1,22 @@
+import UIKit
 import GoogleMaps
 
 /* This function takes a location ID and returns the calculated route
 from the current user location to the location ID */
-func GetPath(placeID: NSString, placesClient: GMSPlacesClient){
+func GetPath(placeID: String, placesClient: GMSPlacesClient) -> CLLocationCoordinate2D? {
     var loc: CLLocationCoordinate2D?
     var err: NSError?
 
     //Call the lookup function and set the variables inside the anonymous function
-    placesClient!.lookUpPlaceID(placeID, callback: { (place, error) -> () in
+    placesClient.lookUpPlaceID(placeID, callback: { (place, error) -> () in
         if error != nil {
-            println("lookup place id query error: \(error.localizedDescription)")
+            println("lookup place id query error: \(error!.localizedDescription)")
             err = error
             return
         }
 
         if place != nil {
-            loc = place.coordinate
+            loc = place!.coordinate
         } else {
             return
         }
@@ -27,20 +28,20 @@ func GetPath(placeID: NSString, placesClient: GMSPlacesClient){
 /* This function takes a GMSPlacesCLient type object and uses it to access the
 current user location. It returns a CLLocationCoordinate2D type struct object with
 the phone's location (Currently naively takes the last location in the list) */
-func GetCurrentLoc(placesClient: GMSPlacesClient) {
+func GetCurrentLoc(placesClient: GMSPlacesClient) -> CLLocationCoordinate2D? {
     var loc: CLLocationCoordinate2D?
     var err: NSError?
 
-    placesClient!.currentPlaceWithCallback({ (placeLikelihoods, error) -> Void in
+    placesClient.currentPlaceWithCallback({ (placeLikelihoods, error) -> Void in
       // Return nil if there was an error, print to logs
       if error != nil {
-        println("Current Place error: \(error.localizedDescription)")
+        println("Current Place error: \(error!.localizedDescription)")
         err = error
         return
       }
 
       // Right now we just set location to the last coordinate in the list
-      for likelihood in placeLikelihoods.likelihoods {
+      for likelihood in placeLikelihoods!.likelihoods {
         if let likelihood = likelihood as? GMSPlaceLikelihood {
           let loc = likelihood.place.coordinate
         }
@@ -66,8 +67,8 @@ func GetRoute(loc1: CLLocationCoordinate2D, loc2: CLLocationCoordinate2D) {
                   "," + longitude2 + "&key=" + "AIzaSyBMAGsuA1aiKvVqXs1lHEEoes0U7K9h7nU" +
                   "&mode=walking"
 
-    url = NSURL(string: url)
-    let data = NSData(contentsOfURL: url)
+    let nurl = NSURL(string: url)
+    let data = NSData(contentsOfURL: nurl!)
     var error: NSError?
     let dict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSDictionary
     if dict {
