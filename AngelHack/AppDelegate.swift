@@ -13,8 +13,9 @@ import GoogleMaps
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
+    let locationManager = CLLocationManager()
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey("AIzaSyBMAGsuA1aiKvVqXs1lHEEoes0U7K9h7nU")
@@ -27,8 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         self.window?.makeKeyAndVisible()
         */
-        locationManager.requestAlwaysAuthorization()
 
+        locationManager.requestAlwaysAuthorization()
         return true
     }
 
