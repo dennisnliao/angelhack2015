@@ -1,37 +1,75 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Oe3-N2-UxW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="U0l-dU-f03">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Our View Controller-->
+        <!--Are You Lost?-->
         <scene sceneID="mdO-L2-74X">
             <objects>
                 <viewController id="Oe3-N2-UxW" customClass="OurViewController" customModule="AngelHack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Px-Yp-2xA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ihZ-ea-sxT">
+                                <rect key="frame" x="178" y="97" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Are You Lost?" id="gTB-hx-73g">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="A5w-3j-LtE">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xAc-sH-JMa">
+                                <rect key="frame" x="38" y="78" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed" destination="Oe3-N2-UxW" eventType="touchDown" id="ESf-oi-N16"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="ourLabel" destination="ihZ-ea-sxT" id="gN8-l0-XLy"/>
+                        <outlet property="searchDisplayController" destination="p7n-Ei-37b" id="ZFt-Ha-vc5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EZv-D2-8dz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="p7n-Ei-37b">
+                    <connections>
+                        <outlet property="delegate" destination="Oe3-N2-UxW" id="PKh-Yd-CjL"/>
+                        <outlet property="searchContentsController" destination="Oe3-N2-UxW" id="uuF-vH-mNq"/>
+                        <outlet property="searchResultsDataSource" destination="Oe3-N2-UxW" id="Y9a-i3-1Xd"/>
+                        <outlet property="searchResultsDelegate" destination="Oe3-N2-UxW" id="kN3-8H-obz"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="810" y="-261"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ppX-6c-FCU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U0l-dU-f03" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TG2-6e-psa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Oe3-N2-UxW" kind="relationship" relationship="rootViewController" id="ExT-ea-GrA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8fa-n9-lX0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="242" y="-261"/>
-        </scene>
-        <!--Item 2-->
-        <scene sceneID="cRh-6w-WTn">
-            <objects>
-                <viewController id="l9a-Hr-pbW" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zoK-5Z-ZWK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="VPZ-fk-X7E"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f6q-4L-i6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="563.73333333333335" y="550.96000000000004"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
