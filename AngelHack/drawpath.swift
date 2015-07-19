@@ -72,7 +72,7 @@ func GetRoute(loc1: CLLocationCoordinate2D, loc2: CLLocationCoordinate2D) {
     var error: NSError?
     let dict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
 //    if dict != nil {
-            var steps = dict["routes"][0]["legs"][0]["steps"]
+            var steps = dict["routes"]![0]!["legs"]![0]!["steps"]!
 
             points.append(CLLocationCoordinate2DMake(steps[0]["start_location"]["lat"], steps[0]["start_location"]["lng"]))
             for line in steps {
