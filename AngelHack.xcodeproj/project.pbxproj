@@ -15,6 +15,7 @@
 		B838A6FD1B5AE715000F3D32 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B838A6FB1B5AE715000F3D32 /* LaunchScreen.xib */; };
 		B838A7091B5AE715000F3D32 /* AngelHackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B838A7081B5AE715000F3D32 /* AngelHackTests.swift */; };
 		B838A7131B5B02ED000F3D32 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = B838A7121B5B02ED000F3D32 /* Podfile */; };
+		B8ED378E1B5B853400B34F48 /* drawpath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ED378C1B5B83A600B34F48 /* drawpath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		B838A7071B5AE715000F3D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B838A7081B5AE715000F3D32 /* AngelHackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngelHackTests.swift; sourceTree = "<group>"; };
 		B838A7121B5B02ED000F3D32 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B8ED378C1B5B83A600B34F48 /* drawpath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = drawpath.swift; sourceTree = "<group>"; };
 		C180FA613E417CFEE73794A0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF60A034E554C82DE5C3C0C1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EF2183DF8A7817987F6E03FA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		B838A6EF1B5AE715000F3D32 /* AngelHack */ = {
 			isa = PBXGroup;
 			children = (
+				B8ED378C1B5B83A600B34F48 /* drawpath.swift */,
 				B838A6F21B5AE715000F3D32 /* AppDelegate.swift */,
 				B838A6F41B5AE715000F3D32 /* ViewController.swift */,
 				B838A6F61B5AE715000F3D32 /* Main.storyboard */,
@@ -277,6 +280,7 @@
 			files = (
 				B838A6F51B5AE715000F3D32 /* ViewController.swift in Sources */,
 				B838A6F31B5AE715000F3D32 /* AppDelegate.swift in Sources */,
+				B8ED378E1B5B853400B34F48 /* drawpath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
