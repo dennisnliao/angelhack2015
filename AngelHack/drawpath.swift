@@ -71,28 +71,42 @@ func GetRoute(loc1: CLLocationCoordinate2D, loc2: CLLocationCoordinate2D) {
     let data = NSData(contentsOfURL: nurl!)
     var error: NSError?
 
-    let dict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSDictionary
-    if dict {
-            let t1 = dict["routes"] as! NSArray
-            let t2 = t1[0] as! NSDictionary
-            let t3 = t2["legs"] as! NSArray
-            let t4 = t3[0] as! NSDictionary
-            let steps = t4["steps"] as! NSArray
-            let steps0 = steps[0] as! NSDictionary
-            let steps0_start = steps0["start_location"] as! NSDictionary
+    let dict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+        if let t1 = dict["routes"] as? NSArray {
+          if let t2 = t1[0] as? NSDictionary {
+            if let t3 = t2["legs"] as? NSArray {
+              if let t4 = t3[0] as? NSDictionary {
+                if let steps = t4["steps"] as? NSArray {
+                  if let steps0 = steps[0] as? NSDictionary {
+                    if let steps0_start = steps0["start_location"] as? NSDictionary {
+                        if let steps0_start_lat = steps0_start["lat"] as? Double {
+                            if let steps0_start_lng = steps0_start["lng"] as? Double {
+                        points.append(CLLocationCoordinate2DMake(steps0_start_lat, steps0_start_lng))
+                        for line in steps {
+                            if let nstep = line["end_location"] as? NSDictionary {
+                                if let nstep_lat = nstep["lat"] as? Double {
+                                    if let nstep_lng = nstep["lng"] as? Double {
+                                        points.append(CLLocationCoordinate2DMake(nstep_lat, nstep_lng))
+                                    }
+                                }
+                            }
+                            if let npoly_line = line["polyline"] as? NSDictionary {
+                                if let npoly_point = npoly_line["points"] as? String {
+                                    paths.append(npoly["points"])
+                                }
+                            }
+                                }
+                            }
+                        }
+                    }
+                    }
+                }
+                }
+            }
+            }
+    
 
-            points.append(CLLocationCoordinate2DMake(steps0_start["lat"], steps0_start["lng"]))
-            for line in steps {
-                let nstep = line["end_location"] as! NSDictionary
-                points.append(CLLocationCoordinate2DMake(nstep["lat"], nstep["lng"]))
-                let npoly = line["polyline"] as! NSDictionary
-                paths.append(npoly["points"])
-        }
-        } else {
-            println("JSON Error \(err!.localizedDescription)")
-        }
-
-    return (points?, paths?)
+    return (points, paths)
 }
 
 
